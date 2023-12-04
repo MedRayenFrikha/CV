@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index_3.css">
+    <script src="https://kit.fontawesome.com/1bb15cc5c0.js" crossorigin="anonymous"></script>
+    <title>MRF - Contact</title>
+</head>
+
+<body>
+    <header class="container">
+        <div class="page-header">
+            <div class="logo">
+                <a href="index.html">MRF</a>
+            </div>
+            <ul>
+                <li><a href="index.html" style="--navAni:1">Home</a></li>
+                <li><a href="About.html" style="--navAni:2">About</a></li>
+                <li><a href="Skills.html" style="--navAni:3">Skills</a></li>
+                <li><a href="Experience.html" style="--navAni:4">Dossier</a></li>
+                <li><a href="Contact.html" style="--navAni:5">Contact</a></li>
+            </ul>
+
+            <div class="circle-photo">
+                <img src="circle.jpg" alt="Circle Photo" class="img-circle">
+            </div>
+        </div>
+    </header>
+
+    <section class="container">
+        <div class="main">
+            <div class="images">
+                <img src="cv_photo.jpg" alt="" class="img-w">
+            </div>
+            <div class="detail">
+                <div class="row">
+                    <div class="contact-left">
+                        <h2>How To Reach Me</h2>
+                        <br>
+                        <p><i class="fas fa-paper-plane"></i>mohamed-rayen.frikha@esprit.tn</p>
+                        <br>
+                        <p><i class="fas fa-phone-square-alt"></i><br>
+                            <i class="fa-brands fa-whatsapp"></i>+216 94516748</p>
+                        <br>
+                        <div class="social-icons">
+                            <a href="https://www.linkedin.com/in/frikha-mohamed-rayen-b5135029b/" target="_blank"><i
+                                    class="fab fa-linkedin"></i></a>
+                            <a href="https://github.com/MedRayenFrikha" target="_blank"><i
+                                    class="fab fa-github"></i></a>
+                        </div>
+                        <a href="Med Rayen Frikha -- CV.pdf" download="Med Rayen Frikha -- CV.pdf"
+                            class="prs" target="_blank">Download CV</a>
+                    </div>
+
+                    <div class="contact-right">
+                        <!-- Formspree integration -->
+                        <form id="contactForm" action="https://formspree.io/f/xknllapn" method="post">
+                            <input type="text" name="Name" placeholder="Enter Your Name" required
+                                oninput="validateName(this)">
+                            <input type="tel" name="Phone" placeholder="Enter Your PhoneNumber" required
+                                oninput="validatePhoneNumber(this)">
+                            <input type="teladd" name="+" placeholder="Enter The international dialing prefix(+)" required
+                                oninput="validatePhoneAdditional(this)">
+                            <input type="email" name="email" placeholder="Enter Your Email" required
+                                oninput="validateEmail(this)">
+                            <p id="email-error-message" style="color: red; display: none;">Invalid email address</p>
+                            <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                            <button class="prs" type="submit" >Submit</button>
+                            <button type="button" class="prs" onclick="resetForm()">Reset</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function validateName(input) {
+            // Get the entered value
+            var inputValue = input.value;
+
+            // Allow letters and spaces
+            var cleanedValue = inputValue.replace(/[^A-Za-z\s]/g, '');
+
+            // Update the input value
+            input.value = cleanedValue;
+        }
+
+        function validatePhoneNumber(input) {
+            // Get the entered value
+            var inputValue = input.value;
+
+            // Remove non-digit characters
+            var cleanedValue = inputValue.replace(/\D/g, '');
+
+            // Limit the length to 8 characters
+            cleanedValue = cleanedValue.slice(0, 8);
+
+            // Update the input value
+            input.value = cleanedValue;
+        }
+
+        function validatePhoneAdditional(input) {
+            // Get the entered value
+            var inputValue = input.value;
+
+            // Remove non-digit characters
+            var cleanedValue = inputValue.replace(/\D/g, '');
+
+            // Prepend "+" and limit the length to 3 or 4 characters
+            cleanedValue = '+' + cleanedValue.slice(0, 3);
+
+            // Update the input value
+            input.value = cleanedValue;
+        }
+
+        function validateEmail(input) {
+            // Get the entered value
+            var inputValue = input.value;
+
+            // Check if the value contains the "@" symbol
+            var isValid = inputValue.includes('@');
+
+            // Display an error message if the email is not valid
+            var errorMessage = document.getElementById('email-error-message');
+            if (!isValid) {
+                errorMessage.style.display = 'block';
+            } else {
+                errorMessage.style.display = 'none';
+            }
+
+            // Update the input value
+            input.setCustomValidity(isValid ? '' : 'Invalid email address');
+        }
+
+        // Reset the form
+        function resetForm() {
+            var form = document.getElementById('contactForm');
+            if (form) {
+                form.reset();
+            }
+        }
+    </script>
+</body>
+
+</html>
